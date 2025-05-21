@@ -8,7 +8,7 @@ function getBranchName() {
 
 function extractStoryDetails(branch) {
   const match = branch.match(/-(\d+)-(.+)/);
-  if (!match) return { story: "000000", title: "no-title" };
+  if (!match) return { story: null, title: null };
 
   const story = match[1];
   const rawTitle = match[2];
@@ -18,12 +18,17 @@ function extractStoryDetails(branch) {
 }
 
 async function promptCommitInfo(story, title) {
+  const typeChoices = Object.keys(emojiMap).map((type) => ({
+    name: `${emojiMap[type]} ${type}`,
+    value: type,
+  }));
+
   const { type } = await inquirer.prompt([
     {
       type: "list",
       name: "type",
       message: "Select commit type:",
-      choices: Object.keys(emojiMap),
+      choices: typeChoices,
     },
   ]);
 
@@ -36,7 +41,10 @@ async function promptCommitInfo(story, title) {
   ]);
 
   const emoji = emojiMap[type];
-  const commitTitle = `AB#${story} ${title}`;
+  const commitTitle = story && title ? `AB#${story} ${title}` : "";
+  //   const commitBody = `${emoji} ${type}: ${body}${
+  //     story ? `\n\nAB#${story}` : ""
+  //   }`;
   const commitBody = `${emoji} ${type}: ${body}`;
 
   return { commitTitle, commitBody };
@@ -48,8 +56,14 @@ export default async function runCommit() {
   const { commitTitle, commitBody } = await promptCommitInfo(story, title);
 
   execSync("git add .", { stdio: "inherit" });
-  execSync(`git commit -m "${commitTitle}" -m "${commitBody}"`, {
-    stdio: "inherit",
-  });
+
+  if (commitTitle) {
+    execSync(`git commit -m "${commitTitle}" -m "${commitBody}"`, {
+      stdio: "inherit",
+    });
+  } else {
+    execSync(`git commit -m "${commitBody}"`, { stdio: "inherit" });
+  }
+
   execSync(`git push origin ${branch}`, { stdio: "inherit" });
 }

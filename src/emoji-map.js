@@ -1,11 +1,8 @@
 export default {
-  feat: "✨",
   fix: "🐛",
-  chore: "🔧",
-  docs: "📝",
-  refactor: "♻️",
+  feat: "✨",
   test: "✅",
+  chore: "🔧",
   style: "💄",
-  ci: "⚙️",
-  perf: "⚡️",
+  refactor: "♻️",
 };
