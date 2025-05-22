@@ -17,7 +17,37 @@ function extractStoryDetails(branch) {
   return { story, title };
 }
 
+function getChangedFiles() {
+  const output = execSync("git status --porcelain").toString().trim();
+  const files = output
+    .split("\n")
+    .filter((line) => line.trim())
+    .map((line) => line.trim().split(/\s+/).pop());
+  return files;
+}
+
 async function promptCommitInfo(story, title) {
+  const files = getChangedFiles();
+
+  if (!files.length) {
+    console.log("No changed files to commit.");
+    process.exit(0);
+  }
+
+  const { selectedFiles } = await inquirer.prompt([
+    {
+      type: "checkbox",
+      name: "selectedFiles",
+      message: "Select files to stage:",
+      choices: files,
+    },
+  ]);
+
+  if (selectedFiles.length === 0) {
+    console.log("No files selected. Commit cancelled.");
+    process.exit(0);
+  }
+
   const typeChoices = Object.keys(emojiMap).map((type) => ({
     name: `${emojiMap[type]} ${type}`,
     value: type,
@@ -42,20 +72,20 @@ async function promptCommitInfo(story, title) {
 
   const emoji = emojiMap[type];
   const commitTitle = story && title ? `AB#${story} ${title}` : "";
-  //   const commitBody = `${emoji} ${type}: ${body}${
-  //     story ? `\n\nAB#${story}` : ""
-  //   }`;
   const commitBody = `${emoji} ${type}: ${body}`;
 
-  return { commitTitle, commitBody };
+  return { commitTitle, commitBody, selectedFiles };
 }
 
 export default async function runCommit() {
   const branch = getBranchName();
   const { story, title } = extractStoryDetails(branch);
-  const { commitTitle, commitBody } = await promptCommitInfo(story, title);
+  const { commitTitle, commitBody, selectedFiles } = await promptCommitInfo(
+    story,
+    title
+  );
 
-  execSync("git add .", { stdio: "inherit" });
+  execSync(`git add ${selectedFiles.join(" ")}`, { stdio: "inherit" });
 
   if (commitTitle) {
     execSync(`git commit -m "${commitTitle}" -m "${commitBody}"`, {
