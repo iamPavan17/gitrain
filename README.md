@@ -9,6 +9,14 @@ A CLI tool for emoji-powered commits and GitHub PR creation.
 - Auto-push to branch
 - Generate PRs with titles like `AB#123456 add validation`
 
+## Installation
+
+Install globally via npm:
+
+```bash
+npm install -g gitrain
+```
+
 ## Usage
 
 ### Commit
