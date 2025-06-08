@@ -57,5 +57,3 @@ Requires GitHub CLI (`gh`) and `gh auth login`.
 ```
 
 ---
-
-Made with ❤️ by Pavan S
