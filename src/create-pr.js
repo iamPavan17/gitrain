@@ -10,9 +10,10 @@ export default function runPR() {
   const prTitle = story && title ? `AB#${story} ${title}` : fallbackTitle;
 
   try {
-    execSync(`gh pr create --title "${prTitle}" --head ${branch}`, {
-      stdio: "inherit",
-    });
+    execSync(
+      `gh pr create --title "${prTitle}" --base develop --head ${branch}`,
+      { stdio: "inherit" }
+    );
   } catch (error) {
     console.error("❌ Failed to create PR:", error.message);
   }
