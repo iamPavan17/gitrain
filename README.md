@@ -31,6 +31,8 @@ gitrain
 gitrain pr
 ```
 
+⚠️ Requires GitHub CLI (`gh`) and `gh auth login`.
+
 ## Branch Format
 
 ```
@@ -51,8 +53,6 @@ dev/ui-123456-add-login
 npm install
 npm link / npm unlink -g
 ```
-
-Requires GitHub CLI (`gh`) and `gh auth login`.
 
 ## Structure
 
