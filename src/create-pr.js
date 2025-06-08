@@ -5,7 +5,7 @@ import { getBranchName, extractStoryDetails } from "./utils.js";
 export default function runPR() {
   const branch = getBranchName();
   const { story, title } = extractStoryDetails(branch);
-  // Take the fallback title from the branch name if story or title is not available
+  // Take the fallback title from the branch name if story/title is not available
   const fallbackTitle = branch.replace(/^.*\//, "").replace(/-/g, " ");
   const prTitle = story && title ? `AB#${story} ${title}` : fallbackTitle;
 
