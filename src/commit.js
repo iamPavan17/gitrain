@@ -8,7 +8,7 @@ async function promptCommitInfo() {
   const files = getChangedFiles();
 
   if (!files.length) {
-    console.log("No changed files to commit.");
+    console.log("⚠️ No changed files to commit.");
     process.exit(0);
   }
 
@@ -22,7 +22,7 @@ async function promptCommitInfo() {
   ]);
 
   if (selectedFiles.length === 0) {
-    console.log("No files selected. Process cancelled!");
+    console.log("❌ No files selected. Commit process has been cancelled.");
     process.exit(0);
   }
 
