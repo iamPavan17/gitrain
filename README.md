@@ -1,6 +1,6 @@
 # gitrain
 
-A CLI tool for emoji-powered semantic commits and GitHub PR creation.
+A CLI tool for emoji-powered commits and GitHub PR creation.
 
 ## Features
 
@@ -26,7 +26,7 @@ gitrain pr
 ## Branch Format
 
 ```
-dev/<team>-<story>-<desc>
+dev/<team>-<story-number>-<desc>
 ```
 
 Example:
@@ -50,6 +50,7 @@ Requires GitHub CLI (`gh`) and `gh auth login`.
 
 ```
 ├── bin/index.js
+├── src/utils.js
 ├── src/commit.js
 ├── src/create-pr.js
 ├── src/emoji-map.js

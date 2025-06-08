@@ -1,19 +1,8 @@
-import { execSync } from "child_process";
 import inquirer from "inquirer";
+import { execSync } from "child_process";
+
 import emojiMap from "./emoji-map.js";
-
-function getBranchName() {
-  return execSync("git rev-parse --abbrev-ref HEAD").toString().trim();
-}
-
-function getChangedFiles() {
-  const output = execSync("git status --porcelain").toString().trim();
-  const files = output
-    .split("\n")
-    .filter((line) => line.trim())
-    .map((line) => line.trim().split(/\s+/).pop());
-  return files;
-}
+import { getBranchName, getChangedFiles } from "./utils.js";
 
 async function promptCommitInfo() {
   const files = getChangedFiles();
