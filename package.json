@@ -1,7 +1,7 @@
 {
   "name": "gitrain",
   "version": "1.0.0",
-  "description": "A CLI tool for emoji-powered commits and GitHub PR creation",
+  "description": "A CLI tool for emoji commits and automated PR creation",
   "type": "module",
   "main": "bin/index.js",
   "bin": {
