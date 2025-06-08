@@ -1,7 +1,7 @@
 {
   "name": "gitrain",
   "version": "1.0.0",
-  "description": "",
+  "description": "A CLI tool for emoji-powered commits and GitHub PR creation",
   "type": "module",
   "main": "bin/index.js",
   "bin": {
@@ -11,7 +11,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bin/index.js"
   },
-  "keywords": [],
+  "keywords": [
+    "git",
+    "cli",
+    "emoji",
+    "commit",
+    "pull-request",
+    "automation"
+  ],
   "author": "Pavan S",
   "license": "MIT",
   "dependencies": {
