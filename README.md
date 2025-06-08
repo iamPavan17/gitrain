@@ -31,7 +31,7 @@ gitrain
 gitrain pr
 ```
 
-⚠️ Requires GitHub CLI (`gh`) and `gh auth login`.
+⚠️ Requires [GitHub CLI (`gh`)](https://cli.github.com) and `gh auth login` to use `gitrain pr`.
 
 ## Branch Format
 
