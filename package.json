@@ -13,7 +13,10 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/index.js"
+    "start": "node bin/index.js",
+    "release:patch": "npm version patch && git push origin --follow-tags && npm publish",
+    "release:minor": "npm version minor && git push origin --follow-tags && npm publish",
+    "release:major": "npm version major && git push origin --follow-tags && npm publish"
   },
   "keywords": [
     "git",
