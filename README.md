@@ -28,7 +28,8 @@ gitrain
 ### Create PR
 
 ```bash
-gitrain pr
+gitrain pr             # Creates a PR to the 'develop' branch by default
+gitrain pr --base some-other-branch # Creates a PR to the 'some-other-branch' branch
 ```
 
 ⚠️ Requires [GitHub CLI (`gh`)](https://cli.github.com) and `gh auth login` to use `gitrain pr`.
