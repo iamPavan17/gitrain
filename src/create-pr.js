@@ -9,11 +9,20 @@ export default function runPR() {
   const baseIndex = process.argv.indexOf("--base");
   const baseBranch = baseIndex !== -1 ? process.argv[baseIndex + 1] : "develop";
 
+  // Read optional --tracker <type>
+  const trackerIndex = process.argv.indexOf("--tracker");
+  const tracker =
+    trackerIndex !== -1 ? process.argv[trackerIndex + 1] : "azure";
+
+  const trackerPrefix = tracker === "jira" ? "JIRA-" : "AB#";
+
   const { story, title } = extractStoryDetails(branch);
 
   // Take the fallback title from the branch name if story/title is not available
   const fallbackTitle = branch.replace(/^.*\//, "").replace(/-/g, " ");
-  const prTitle = story && title ? `AB#${story} ${title}` : fallbackTitle;
+
+  const prTitle =
+    story && title ? `${trackerPrefix}${story} ${title}` : fallbackTitle;
 
   try {
     execSync(
