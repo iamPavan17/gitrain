@@ -27,6 +27,8 @@ npm install -g gitrain
 gitrain
 ```
 
+![Commit Demo](https://res.cloudinary.com/dx5l2vnnu/image/upload/v1749569900/commit_xftt0r.gif)
+
 ### Create PR
 
 ```bash
@@ -41,6 +43,8 @@ It’s built to cut down on manual effort when using tools like Azure DevOps and
 
 - AB#123456 → for Azure Boards (required for merge policies)
 - JIRA-123 → for Jira integrations
+
+![PR Demo](https://res.cloudinary.com/dx5l2vnnu/image/upload/v1749569900/pr_i7fvaw.gif)
 
 ⚠️ Requires [GitHub CLI (`gh`)](https://cli.github.com) and `gh auth login` to use `gitrain pr`.
 
