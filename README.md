@@ -58,11 +58,4 @@ dev/ui-123456-add-login
 
 → PR title becomes: AB#123456 add login or JIRA-123456 add login (based on --tracker)
 
-## 🔧 Setup for Local Development
-
-```bash
-npm install
-npm link / npm unlink -g
-```
-
 ---
