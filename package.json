@@ -1,7 +1,7 @@
 {
   "name": "gitrain",
   "version": "1.0.5",
-  "description": "A CLI tool for emoji commits and automated PR creation",
+  "description": "A CLI tool for emoji-powered commits and automated GitHub PR creation with story tracking.",
   "type": "module",
   "main": "bin/index.js",
   "bin": {
@@ -24,7 +24,11 @@
     "emoji",
     "commit",
     "pull-request",
-    "automation"
+    "automation",
+    "pr",
+    "azure-devops",
+    "jira",
+    "story-tracker"
   ],
   "author": "Pavan S",
   "license": "MIT",
