@@ -4,14 +4,15 @@ function getBranchName() {
   return execSync("git rev-parse --abbrev-ref HEAD").toString().trim();
 }
 
-// Branch name should follow: dev/<team-name>-<story-number>-<short-desc>
 function extractStoryDetails(branch) {
-  const match = branch.match(/-(\d+)-(.+)/);
+  const match = branch.match(
+    /(?:^|\/)[a-zA-Z\-]*?(\d+)(?:-([a-zA-Z0-9\-]+.*))?/
+  );
   if (!match) return { story: null, title: null };
 
   const story = match[1];
-  const rawTitle = match[2];
-  const title = rawTitle.replace(/-/g, " ");
+  const rawTitle = match[2] || "";
+  const title = rawTitle.replace(/-/g, " ").trim();
 
   return { story, title };
 }

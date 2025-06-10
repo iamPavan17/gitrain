@@ -50,16 +50,25 @@ It’s built to cut down on manual effort when using tools like Azure DevOps and
 
 ## 🌿 Branch Format
 
-```
-dev/<team>-<story-number>-<desc>
-```
+Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
+The CLI will extract the story number and a readable title from your branch.
 
-Example:
+### Supported Branch Formats
 
 ```
+dev-11223-add-icons
 dev/ui-123456-add-login
+dev/12345-add-some-lines
+dev/vikings-12345-add-button
+hotfix/squad-78910-fix-header
+feature/98765-fix-api-response
 ```
 
-→ PR title becomes: AB#123456 add login or JIRA-123456 add login (based on --tracker)
+### Resulting PR Titles
+
+- `AB#123456 add login`
+- `JIRA-98765 fix api response` (if using `--tracker jira`)
+
+If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
 
 ---

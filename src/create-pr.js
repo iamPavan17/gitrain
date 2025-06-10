@@ -1,8 +1,9 @@
+import inquirer from "inquirer";
 import { execSync } from "child_process";
 
 import { getBranchName, extractStoryDetails } from "./utils.js";
 
-export default function runPR() {
+export default async function runPR() {
   const branch = getBranchName();
 
   // Read optional --base <branch>
@@ -16,13 +17,26 @@ export default function runPR() {
 
   const trackerPrefix = tracker === "jira" ? "JIRA-" : "AB#";
 
-  const { story, title } = extractStoryDetails(branch);
+  let { story, title } = extractStoryDetails(branch);
+
+  if (!story) {
+    const { inputStory } = await inquirer.prompt([
+      {
+        type: "input",
+        name: "inputStory",
+        message:
+          "Story number not found from branch. Enter story number (or leave blank to skip):",
+      },
+    ]);
+    story = inputStory || null;
+  }
 
   // Take the fallback title from the branch name if story/title is not available
   const fallbackTitle = branch.replace(/^.*\//, "").replace(/-/g, " ");
 
-  const prTitle =
-    story && title ? `${trackerPrefix}${story} ${title}` : fallbackTitle;
+  const prTitle = story
+    ? `${trackerPrefix}${story} ${title || fallbackTitle}`
+    : fallbackTitle;
 
   try {
     execSync(
