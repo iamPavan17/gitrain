@@ -71,4 +71,10 @@ feature/98765-fix-api-response
 
 If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
 
+## 🐛 Need Help or Found a Bug?
+
+If you run into issues, feel free to [open an issue](https://github.com/iamPavan17/gitrain/issues) on GitHub.
+
+Whether it’s a bug report, feature request, or general question, all input is appreciated.
+
 ---
