@@ -48,6 +48,26 @@ It’s built to cut down on manual effort when using tools like Azure DevOps and
 
 ⚠️ Requires [GitHub CLI (`gh`)](https://cli.github.com) and `gh auth login` to use `gitrain pr`.
 
+## ✅ Options
+
+```bash
+gitrain pr [--base <branch>] [--tracker <type>]
+```
+
+| Flag      | Description                                                                        |
+| --------- | ---------------------------------------------------------------------------------- |
+| --base    | Target branch for the PR (default: develop)                                        |
+| --tracker | Story tracker type: azure, jira, or custom (default: azure i.e, AB#<story-number>) |
+
+### Examples:
+
+```
+gitrain pr                         # PR to 'develop', title like: AB#123 add login
+gitrain pr --base main             # PR to 'main'
+gitrain pr --tracker jira          # PR title: JIRA-123 add login
+gitrain pr --base release --tracker custom  # Use prefix from `.gitrainrc`
+```
+
 ## 🌿 Branch Format
 
 Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
@@ -70,6 +90,32 @@ feature/98765-fix-api-response
 - `JIRA-98765 fix api response` (if using `--tracker jira`)
 
 If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
+
+## 🔧 Configuration (Optional)
+
+You can generate a local .gitrainrc file to set your preferred default tracker and baseBranch:
+
+```bash
+gitrain init
+```
+
+![gitrain init](https://res.cloudinary.com/dx5l2vnnu/image/upload/v1749824408/gitrain-init_k603lm.gif)
+
+This will create a .gitrainrc like:
+
+```json
+{
+  "tracker": "custom",
+  "trackerPrefix": "RAM-",
+  "baseBranch": "master"
+}
+```
+
+You can still override these using CLI flags:
+
+```bash
+gitrain pr --base main --tracker jira
+```
 
 ## 🐛 Need Help or Found a Bug?
 
