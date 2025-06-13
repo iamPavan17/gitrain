@@ -68,29 +68,6 @@ gitrain pr --tracker jira          # PR title: JIRA-123 add login
 gitrain pr --base release --tracker custom  # Use prefix from `.gitrainrc`
 ```
 
-## 🌿 Branch Format
-
-Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
-The CLI will extract the story number and a readable title from your branch.
-
-### Supported Branch Formats
-
-```
-dev-11223-add-icons
-dev/ui-123456-add-login
-dev/12345-add-some-lines
-dev/vikings-12345-add-button
-hotfix/squad-78910-fix-header
-feature/98765-fix-api-response
-```
-
-### Resulting PR Titles
-
-- `AB#123456 add login`
-- `JIRA-98765 fix api response` (if using `--tracker jira`)
-
-If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
-
 ## 🔧 Configuration (Optional)
 
 You can generate a local .gitrainrc file to set your preferred default tracker and baseBranch:
@@ -116,6 +93,29 @@ You can still override these using CLI flags:
 ```bash
 gitrain pr --base main --tracker jira
 ```
+
+## 🌿 Branch Format
+
+Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
+The CLI will extract the story number and a readable title from your branch.
+
+### Supported Branch Formats
+
+```
+dev-11223-add-icons
+dev/ui-123456-add-login
+dev/12345-add-some-lines
+dev/vikings-12345-add-button
+hotfix/squad-78910-fix-header
+feature/98765-fix-api-response
+```
+
+### Resulting PR Titles
+
+- `AB#123456 add login`
+- `JIRA-98765 fix api response` (if using `--tracker jira`)
+
+If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
 
 ## 🐛 Need Help or Found a Bug?
 
