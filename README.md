@@ -94,6 +94,29 @@ You can still override these using CLI flags:
 gitrain pr --base main --tracker jira
 ```
 
+### Custom Emoji map
+
+If you want to override the default emojis used in commit messages, you can manually extend your `.gitrainrc` with an emojiMap key:
+
+```json
+{
+  "tracker": "custom",
+  "trackerPrefix": "RAM-",
+  "baseBranch": "master",
+  "emojiMap": {
+    "feat": "🦄",
+    "fix": "🐞"
+  }
+}
+```
+
+This allows you to personalize the commit type emojis used during gitrain commits.
+
+## 🌿 Branch Format
+
+Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
+The CLI will extract the story number and a readable title from your branch.
+
 ## 🌿 Branch Format
 
 Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
