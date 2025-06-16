@@ -10,6 +10,7 @@ This helps teams if following merge policies that require story identifiers in p
 - Create commits like `✨ feat: add validation`
 - Auto-push to current branch
 - Generate PRs with titles like `AB#123456 add validation` or `JIRA-123 add validation`
+- Custom emoji map support via `.gitrainrc`
 
 ## 🚀 Installation
 
