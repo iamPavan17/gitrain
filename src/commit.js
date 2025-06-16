@@ -1,8 +1,8 @@
 import inquirer from "inquirer";
 import { execSync } from "child_process";
 
-import emojiMap from "./emoji-map.js";
-import { getBranchName, getChangedFiles } from "./utils.js";
+import { defaultEmojiMap } from "./constants.js";
+import { getBranchName, getChangedFiles, loadConfig } from "./utils.js";
 
 async function promptCommitInfo() {
   const files = getChangedFiles();
@@ -25,6 +25,9 @@ async function promptCommitInfo() {
     console.log("❌ No files selected. Commit process has been cancelled.");
     process.exit(0);
   }
+
+  const config = loadConfig();
+  const emojiMap = config?.emojiMap || defaultEmojiMap;
 
   const typeChoices = Object.keys(emojiMap).map((type) => ({
     name: `${emojiMap[type]} ${type}`,

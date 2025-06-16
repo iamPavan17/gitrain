@@ -1,44 +1,33 @@
-import fs from "fs";
-import path from "path";
 import inquirer from "inquirer";
 import { execSync } from "child_process";
 
-import { getBranchName, extractStoryDetails } from "./utils.js";
+import { getBranchName, extractStoryDetails, loadConfig } from "./utils.js";
 
 export default async function runPR() {
   const branch = getBranchName();
 
-  // Load .gitrainrc if available
-  let config = {};
-  const configPath = path.resolve(process.cwd(), ".gitrainrc");
-  if (fs.existsSync(configPath)) {
-    try {
-      config = JSON.parse(fs.readFileSync(configPath, "utf-8"));
-    } catch {
-      console.warn("⚠️ Failed to parse .gitrainrc — using defaults.");
-    }
-  }
+  const config = loadConfig();
 
   // Read optional --base <branch>
   const baseIndex = process.argv.indexOf("--base");
   const baseBranch =
     baseIndex !== -1
       ? process.argv[baseIndex + 1]
-      : config.baseBranch || "develop";
+      : config?.baseBranch || "develop";
 
   // Read optional --tracker <type>
   const trackerIndex = process.argv.indexOf("--tracker");
   const tracker =
     trackerIndex !== -1
       ? process.argv[trackerIndex + 1]
-      : config.tracker || "azure";
+      : config?.tracker || "azure";
 
   const trackerPrefix =
     tracker === "jira"
       ? "JIRA-"
       : tracker === "azure"
       ? "AB#"
-      : config.trackerPrefix || "AB#";
+      : config?.trackerPrefix || "AB#";
 
   let { story, title } = extractStoryDetails(branch);
 

@@ -1,4 +1,4 @@
-export default {
+const defaultEmojiMap = {
   fix: "🐛",
   feat: "✨",
   test: "✅",
@@ -6,3 +6,5 @@ export default {
   style: "💄",
   refactor: "♻️",
 };
+
+export { defaultEmojiMap };

@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { execSync } from "child_process";
 
 function getBranchName() {
@@ -26,4 +28,17 @@ function getChangedFiles() {
   return files;
 }
 
-export { getBranchName, extractStoryDetails, getChangedFiles };
+// Load .gitrainrc if available
+function loadConfig() {
+  const configPath = path.resolve(process.cwd(), ".gitrainrc");
+  if (fs.existsSync(configPath)) {
+    try {
+      return JSON.parse(fs.readFileSync(configPath, "utf-8"));
+    } catch {
+      console.warn("⚠️ Failed to parse .gitrainrc — using defaults.");
+      return {};
+    }
+  }
+}
+
+export { getBranchName, extractStoryDetails, getChangedFiles, loadConfig };
