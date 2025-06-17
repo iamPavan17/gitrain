@@ -2,17 +2,17 @@
 
 A CLI tool for emoji-powered commits and automated GitHub pull request creation, with built-in support for including `AB#123` (Azure Boards) or `JIRA-123` references in PR titles.
 
-This helps teams if following merge policies that require story identifiers in pull requests, ensuring proper linkage to work items in systems like **Azure DevOps** or **Jira**.
+This helps teams who follow **merge policies that require story identifiers** in pull requests, ensuring proper linkage to work items in systems like **Azure DevOps** or **Jira**, which is often required for completing merges.
 
-## ✨ Features
+## Features
 
 - Select files to stage
 - Create commits like `✨ feat: add validation`
 - Auto-push to current branch
 - Generate PRs with titles like `AB#123456 add validation` or `JIRA-123 add validation`
-- Custom emoji map support via `.gitrainrc`
+- Custom configuration support via `.gitrainrc`, allowing you to define your own emoji map, default tracker, and default base branch for PR creation.
 
-## 🚀 Installation
+## Installation
 
 Install globally via npm to use `gitrain` from anywhere:
 
@@ -20,7 +20,7 @@ Install globally via npm to use `gitrain` from anywhere:
 npm install -g gitrain
 ```
 
-## 🛠 Usage
+## Usage
 
 ### Commit
 
@@ -42,14 +42,15 @@ gitrain pr --base release --tracker jira  # Customize both base branch and title
 This command auto-generates a pull request title from your branch name using the embedded story number.
 It’s built to cut down on manual effort when using tools like Azure DevOps and Jira, ensuring PR titles include:
 
-- AB#123456 → for Azure Boards (required for merge policies)
+- AB#123456 → for Azure Boards
 - JIRA-123 → for Jira integrations
 
 ![PR Demo](https://res.cloudinary.com/dx5l2vnnu/image/upload/v1749569900/pr_i7fvaw.gif)
 
 ⚠️ Requires [GitHub CLI (`gh`)](https://cli.github.com) and `gh auth login` to use `gitrain pr`.
+PR creation is currently supported only for **GitHub** repositories.
 
-## ✅ Options
+## Options
 
 ```bash
 gitrain pr [--base <branch>] [--tracker <type>]
@@ -69,7 +70,7 @@ gitrain pr --tracker jira          # PR title: JIRA-123 add login
 gitrain pr --base release --tracker custom  # Use prefix from `.gitrainrc`
 ```
 
-## 🔧 Configuration (Optional)
+## Configuration (Optional)
 
 You can generate a local .gitrainrc file to set your preferred default tracker and baseBranch:
 
@@ -113,12 +114,7 @@ If you want to override the default emojis used in commit messages, you can manu
 
 This allows you to personalize the commit type emojis used during gitrain commits.
 
-## 🌿 Branch Format
-
-Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
-The CLI will extract the story number and a readable title from your branch.
-
-## 🌿 Branch Format
+## Branch Format
 
 Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
 The CLI will extract the story number and a readable title from your branch.
@@ -141,7 +137,7 @@ feature/98765-fix-api-response
 
 If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
 
-## 🐛 Need Help or Found a Bug?
+## Need Help or Found a Bug?
 
 If you run into issues, feel free to [open an issue](https://github.com/iamPavan17/gitrain/issues) on GitHub.
 

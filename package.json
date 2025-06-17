@@ -2,6 +2,26 @@
   "name": "gitrain",
   "version": "1.2.1",
   "description": "A CLI tool for emoji-powered commits and automated GitHub PR creation with story tracking.",
+  "keywords": [
+    "git",
+    "cli",
+    "emoji",
+    "commit",
+    "pull-request",
+    "automation",
+    "pr",
+    "azure-devops",
+    "jira",
+    "story-tracker",
+    "gh",
+    "gitrain",
+    "github",
+    "azure"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamPavan17/gitrain.git"
+  },
   "type": "module",
   "main": "bin/index.js",
   "bin": {
@@ -18,18 +38,6 @@
     "release:minor": "npm version minor && git push origin --follow-tags && npm publish",
     "release:major": "npm version major && git push origin --follow-tags && npm publish"
   },
-  "keywords": [
-    "git",
-    "cli",
-    "emoji",
-    "commit",
-    "pull-request",
-    "automation",
-    "pr",
-    "azure-devops",
-    "jira",
-    "story-tracker"
-  ],
   "author": "Pavan S",
   "license": "MIT",
   "dependencies": {
