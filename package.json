@@ -38,6 +38,7 @@
     "type": "git",
     "url": "https://github.com/iamPavan17/gitrain.git"
   },
+  "homepage": "https://github.com/iamPavan17/gitrain",
   "author": "Pavan S",
   "license": "MIT",
   "dependencies": {
