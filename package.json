@@ -1,7 +1,23 @@
 {
   "name": "gitrain",
-  "version": "1.2.2",
+  "version": "1.2.1",
   "description": "A CLI tool for emoji-powered commits and automated GitHub PR creation with story tracking.",
+  "type": "module",
+  "main": "bin/index.js",
+  "bin": {
+    "gitrain": "./bin/index.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bin/index.js",
+    "release:patch": "npm version patch && git push origin --follow-tags && npm publish",
+    "release:minor": "npm version minor && git push origin --follow-tags && npm publish",
+    "release:major": "npm version major && git push origin --follow-tags && npm publish"
+  },
   "keywords": [
     "git",
     "cli",
@@ -21,22 +37,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/iamPavan17/gitrain.git"
-  },
-  "type": "module",
-  "main": "bin/index.js",
-  "bin": {
-    "gitrain": "./bin/index.js"
-  },
-  "files": [
-    "bin",
-    "src"
-  ],
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node bin/index.js",
-    "release:patch": "npm version patch && git push origin --follow-tags && npm publish",
-    "release:minor": "npm version minor && git push origin --follow-tags && npm publish",
-    "release:major": "npm version major && git push origin --follow-tags && npm publish"
   },
   "author": "Pavan S",
   "license": "MIT",
