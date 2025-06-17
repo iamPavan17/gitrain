@@ -116,7 +116,8 @@ This allows you to personalize the commit type emojis used during gitrain commit
 
 ## Branch Format
 
-Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
+Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).
+
 The CLI will extract the story number and a readable title from your branch.
 
 ### Supported Branch Formats

@@ -9,7 +9,8 @@
   },
   "files": [
     "bin",
-    "src"
+    "src",
+    "README.md"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -38,7 +39,6 @@
     "type": "git",
     "url": "https://github.com/iamPavan17/gitrain.git"
   },
-  "homepage": "https://github.com/iamPavan17/gitrain",
   "author": "Pavan S",
   "license": "MIT",
   "dependencies": {
