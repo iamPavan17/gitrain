@@ -1,4 +1,4 @@
-const defaultEmojiMap = {
+const defaultCommitTypes = {
   fix: "🐛",
   feat: "✨",
   test: "✅",
@@ -7,4 +7,4 @@ const defaultEmojiMap = {
   refactor: "♻️",
 };
 
-export { defaultEmojiMap };
+export { defaultCommitTypes };

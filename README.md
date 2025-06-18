@@ -96,28 +96,44 @@ You can still override these using CLI flags:
 gitrain pr --base main --tracker jira
 ```
 
-### Custom Emoji map
+### Custom Commit Types and Emojis
 
-If you want to override the default emojis used in commit messages, you can manually extend your `.gitrainrc` with an emojiMap key:
+If you want to override the default commit types and emojis used in commit messages, you can manually extend your `.gitrainrc`:
 
 ```json
 {
   "tracker": "custom",
   "trackerPrefix": "RAM-",
   "baseBranch": "master",
-  "emojiMap": {
-    "feat": "🦄",
-    "fix": "🐞"
+  "useEmoji": true, // default (true)
+  "commitTypes": {
+    "feature": "🦄",
+    "bugfix": "🐞"
   }
 }
 ```
 
-This allows you to personalize the commit type emojis used during gitrain commits.
+- **`commitTypes`**: Define your preferred commit types with or without emojis.
+- **`useEmoji`** (default: true):
+  - `true`: Emojis will be included in commit messages (e.g., 🦄 feature: add unicorn mode)
+  - `false`: Only type is shown (e.g., feat: add unicorn mode)
+
+You can define types however you like:
+
+```json
+{
+  "commitTypes": {
+    "feature": "",
+    "bugfix": ""
+  }
+}
+```
+
+This gives you full control over commit formatting.
 
 ## Branch Format
 
-Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).
-
+Your branch name should include a **story number** to auto-generate a proper PR title (e.g., `AB#12345` or `JIRA-123`).  
 The CLI will extract the story number and a readable title from your branch.
 
 ### Supported Branch Formats

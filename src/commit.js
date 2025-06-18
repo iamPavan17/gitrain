@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
 import { execSync } from "child_process";
 
-import { defaultEmojiMap } from "./constants.js";
+import { defaultCommitTypes } from "./constants.js";
 import { getBranchName, getChangedFiles, loadConfig } from "./utils.js";
 
 async function promptCommitInfo() {
@@ -27,10 +27,11 @@ async function promptCommitInfo() {
   }
 
   const config = loadConfig();
-  const emojiMap = config?.emojiMap || defaultEmojiMap;
+  const commitTypes = config?.commitTypes || defaultCommitTypes;
+  const useEmoji = config?.useEmoji !== false;
 
-  const typeChoices = Object.keys(emojiMap).map((type) => ({
-    name: `${emojiMap[type]} ${type}`,
+  const typeChoices = Object.keys(commitTypes).map((type) => ({
+    name: useEmoji && commitTypes[type] ? `${commitTypes[type]} ${type}` : type,
     value: type,
   }));
 
@@ -51,8 +52,9 @@ async function promptCommitInfo() {
     },
   ]);
 
-  const emoji = emojiMap[type];
-  const commitMessage = `${emoji} ${type}: ${body}`;
+  const emoji = useEmoji ? commitTypes[type] || "" : "";
+  const prefix = emoji ? `${emoji} ${type}` : type;
+  const commitMessage = `${prefix}: ${body}`;
 
   return { commitMessage, selectedFiles };
 }
