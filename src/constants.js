@@ -1,10 +1,11 @@
 const defaultCommitTypes = {
   fix: "🐛",
+  wip: "🚧",
   feat: "✨",
-  test: "✅",
-  chore: "🔧",
   style: "💄",
   refactor: "♻️",
+  chore: "🔧",
+  test: "✅",
 };
 
 export { defaultCommitTypes };
