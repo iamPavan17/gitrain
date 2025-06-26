@@ -154,6 +154,12 @@ feature/98765-fix-api-response
 
 If the story number is missing from the branch, `gitrain` will prompt you to enter it manually.
 
+## Windows Troubleshooting
+
+On some Windows 10 machines, you may need to add npm’s global bin path to your system `PATH` if `gitrain` is not recognized after install.
+
+Run `npm config get prefix` to locate it (e.g., `C:\Users\YourName\AppData\Roaming\npm`) and add that to your environment variables.
+
 ## Need Help or Found a Bug?
 
 If you run into issues, feel free to [open an issue](https://github.com/iamPavan17/gitrain/issues) on GitHub.
